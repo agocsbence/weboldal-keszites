@@ -13,6 +13,7 @@
   },
   "devDependencies": {
     "gulp-imagemin": "^7.1.0",
+    "gulp-responsive-images": "0.0.4",
     "gulp-sass": "^4.0.2"
   }
 }
