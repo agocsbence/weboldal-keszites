@@ -45,4 +45,9 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/css/fonts/'));
 });
 
-gulp.task('default', gulp.series('imagemin', 'fonts', 'sass', 'sass:watch'));
+gulp.task('index', function() {
+  return gulp.src('src/**/*.html')
+    .pipe(gulp.dest('dist/'));
+});
+
+gulp.task('default', gulp.series('imagemin', 'fonts', 'index', 'sass', 'sass:watch'));
