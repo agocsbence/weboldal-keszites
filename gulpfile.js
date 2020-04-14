@@ -10,11 +10,6 @@ gulp.task('sass', function () {
     .pipe(sass().on('error', sass.logError))
     .pipe(gulp.dest('./dist/css'));
 });
- 
-gulp.task('sass:watch', function () {
-  gulp.watch('./src/scss/**/*.scss', gulp.series('sass'));
-  console.log('gulp is watching for SCSS changes 👀');
-});
 
 // gulp.task('srcset', function(){
 //   return gulp.src('./src/img/belga.png}')
@@ -45,9 +40,17 @@ gulp.task('fonts', function() {
     .pipe(gulp.dest('dist/css/fonts/'));
 });
 
-gulp.task('index', function() {
+gulp.task('copyHTML', function() {
   return gulp.src('src/**/*.html')
     .pipe(gulp.dest('dist/'));
 });
 
-gulp.task('default', gulp.series('imagemin', 'fonts', 'index', 'sass', 'sass:watch'));
+gulp.task('watch', function () {
+  gulp.watch('./src/scss/**/*.scss', gulp.series('sass'));
+  console.log('gulp is watching for SCSS changes 👀');
+  gulp.watch('.src/**/*.html', gulp.series('copyHTML'));
+  console.log('gulp is watching for changes in HTML files ⌨️');
+  return
+});
+
+gulp.task('default', gulp.series('imagemin', 'fonts', 'copyHTML', 'sass', 'watch'));
