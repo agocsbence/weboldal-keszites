@@ -53,7 +53,7 @@ $desktop-large:                 2200px;
 .border-top { border-top: 1px solid $grey; }
 .border-bottom { border-bottom: 1px solid $grey; }
 .container {
-    max-width: 80%;
+    max-width: 90%;
     margin: 0 auto;
 }
 .btn {
@@ -99,6 +99,16 @@ a {
 img {
     max-width: 100%;
     height: auto;
+    &.grayscale-filter {
+        @media screen and (min-width: $desktop) {
+            filter: gray;
+            -webkit-filter: grayscale(1);
+            &:hover {
+                filter: none;
+                    -webkit-filter: grayscale(0);
+            }
+        }
+    }
 }
 h1, h2, h3, h4, h5, h6 { font-weight: normal; }
 p { margin-bottom: 1.6rem; line-height: 1.25; }
@@ -120,7 +130,7 @@ li { line-height: 1.25; }
 }
 ::-moz-selection { background: $white; }
 ::selection { background: $white; }
-html{ scroll-behavior: smooth; background: $white-broken; }
+html{ scroll-behavior: smooth; background: $white; }
 body {
 	font-size: 18px;
     font-family: "NHaasGroteskTX";
@@ -134,7 +144,7 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: .6rem 0;
+    padding: 2rem 0 1.2rem 0;
     img {
         max-height: 2rem;
     }
@@ -143,6 +153,7 @@ header {
             li {
                 display: inline;
                 padding: .1rem .3rem;
+                margin-left: 2rem;
                 &:hover {
                     text-decoration: underline;
                     background: $white;
@@ -232,6 +243,7 @@ main {
                     background: $black;
                     opacity: 1;
                     justify-self: center;
+                    transition: width .3s ease;
                     // position: absolute;
                     &.swiper-pagination-bullet-active {
                         width: 3.625rem;
@@ -282,9 +294,16 @@ main {
     }
     section#contact {
         .grid {
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            justify-content: center;
+            align-items: center;
+            margin-top: 3rem;
             .grid-item {
+                justify-self: center;
+                &:first-child { justify-self: start; }
+                &:last-child { justify-self: end; }
                 .btn {
-                    display: block;
+                    display: inline-block;
                     padding: .6rem 1.2rem;
                 }
             }
