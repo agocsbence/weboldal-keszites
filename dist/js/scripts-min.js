@@ -1,0 +1,1 @@
+var swiper=new Swiper("#process-slider",{pagination:{el:".swiper-pagination",dynamicBullets:!0},keyboard:{enabled:!0},autoplay:{delay:2500,disableOnInteraction:!1},loop:!0,slidesPerView:1,spaceBetween:30});

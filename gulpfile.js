@@ -3,6 +3,8 @@ const gulp = require('gulp'),
       postcss = require('gulp-postcss'),
       autoprefixer = require('autoprefixer'),
       cssnano = require('cssnano'),
+      minify = require('gulp-minify'),
+      concat = require('gulp-concat'),
       imagemin = require('gulp-imagemin');
 var responsive = require('gulp-responsive-images');
 
@@ -14,9 +16,9 @@ gulp.task('styles', function () {
     cssnano()
   ];
   return gulp.src('src/scss/style.scss')
-        .pipe(sass().on('error', sass.logError))
-        .pipe(postcss(processors))
-        .pipe(gulp.dest('dist/css/'));
+    .pipe(sass().on('error', sass.logError))
+    .pipe(postcss(processors))
+    .pipe(gulp.dest('dist/css/'));
 });
 
 gulp.task('imagemin', async function () {
@@ -28,6 +30,13 @@ gulp.task('imagemin', async function () {
 gulp.task('fonts', function() {
   return gulp.src('src/scss/fonts/*.ttf')
     .pipe(gulp.dest('dist/css/fonts/'));
+});
+
+gulp.task('scripts', function(){
+  return gulp.src('src/js/**/*.js')
+    .pipe(concat('scripts.js'))
+    .pipe(minify())
+    .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('copyHTML', function() {
@@ -43,7 +52,7 @@ gulp.task('watch', function () {
   return
 });
 
-gulp.task('default', gulp.series('imagemin', 'fonts', 'copyHTML', 'styles', 'watch'));
+gulp.task('default', gulp.series('imagemin', 'fonts', 'copyHTML', 'scripts', 'styles', 'watch'));
 
 // gulp.task('srcset', function(){
 //   return gulp.src('./src/img/belga.png}')
