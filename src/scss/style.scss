@@ -68,6 +68,10 @@ $desktop-large:                 2200px;
     grid-gap: 1.8rem;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto;
+    @media screen and (max-width: $tablet) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto auto;
+    }
 }
 .marquee {
     height: 50px;
@@ -144,11 +148,14 @@ header {
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    padding: 2rem 0 1.2rem 0;
+    padding: 2rem 0 1.2rem 0; 
     img {
         max-height: 2rem;
     }
     nav {
+        @media screen and (max-width: $tablet) {
+            display: none;
+        }
         ul {
             li {
                 display: inline;
@@ -177,9 +184,23 @@ main {
         justify-content: space-between;
         align-items: center;
         padding: 8rem 0;
+        @media screen and (max-width: $tablet) {
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2rem 0;
+        }
         h1 {
             font-size: 9.7rem;
             line-height: 10.3rem;
+            @media screen and (max-width: $tablet) {
+                font-size: 5rem;
+                line-height: 110%;
+            }
+        }
+        img {
+            @media screen and (max-width: $tablet) {
+                margin-top: 3rem;
+            }
         }
     }
     section#services {
@@ -187,6 +208,10 @@ main {
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: auto;
         grid-gap: 1.8rem;
+        @media screen and (max-width: $tablet) {
+            grid-template-columns: 1fr;
+            grid-template-rows: auto auto auto;
+        }
         .description {
             margin-top: 2rem;
         }
@@ -207,11 +232,21 @@ main {
                 justify-content: space-between;
                 align-items: flex-start;
                 padding: 6rem 0 0 0;
+                @media screen and (max-width: $tablet) {
+                    flex-direction: column;
+                }
                 .slider-title {
                     font-size: 9rem;
+                    @media screen and (max-width: $tablet) {
+                        font-size: 5rem;
+                        margin-bottom: 2rem;
+                    }
                 }
                 .slider-content {
                     max-width: 46%;
+                    @media screen and (max-width: $tablet) {
+                        max-width: 100%;
+                    }
                 }
             }
             .swiper-pagination {
@@ -265,6 +300,10 @@ main {
             grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
             grid-template-rows: 1fr 1fr;
             grid-gap: 1.8rem;
+            @media screen and (max-width: $tablet) {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+            }
             .client {
                 background: $white;
                 &:before {
@@ -282,6 +321,10 @@ main {
             grid-gap: 1.8rem;
             grid-template-rows: auto;
             margin-top: 5rem;
+            @media screen and (max-width: $tablet) {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto auto auto;
+            }
             .team-member {
                 h2 {
                     font-size: 100%;
@@ -298,13 +341,24 @@ main {
             justify-content: center;
             align-items: center;
             margin-top: 3rem;
+            @media screen and (max-width: $tablet) {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+            }
             .grid-item {
                 justify-self: center;
                 &:first-child { justify-self: start; }
                 &:last-child { justify-self: end; }
+                @media screen and (max-width: $tablet) {
+                    justify-self: start;
+                }
                 .btn {
                     display: inline-block;
                     padding: .6rem 1.2rem;
+                    @media screen and (max-width: $tablet) {
+                        display: block;
+                        width: 100%;
+                    }
                 }
             }
         }
