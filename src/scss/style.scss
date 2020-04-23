@@ -1,7 +1,8 @@
 //variables
 $black:							#322f31;
 $grey:							#979797;
-$white-broken:							#fff;
+$grey-light:                    #d8d8d8;
+$white-broken:					#fff;
 $white:                  rgba(226, 224, 219,0.9);
 
 $mobile:                        767px;
@@ -360,6 +361,63 @@ main {
                         width: 100%;
                     }
                 }
+            }
+        }
+    }
+    section#form {
+        margin-top: 2rem;
+        .flexbox {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto;
+            grid-gap: 1.8rem;
+            form {
+                width: 100%;
+                input,
+                textarea {
+                    width: 100%;
+                    margin-top: 1rem;
+                    margin-bottom: 4rem;
+                    background: $grey-light;
+                    border: none;
+                    font-size: 1rem;
+                    &#f_range {
+                        margin-bottom: 1.25rem;
+                        margin-top: 1.6875rem;
+                        -webkit-appearance: none;
+                        width: 100%;
+                        height: 1px;
+                        background: $grey;
+                        outline: none;
+                        &::-webkit-slider-thumb {
+                            -webkit-appearance: none;
+                            appearance: none;
+                            width: 1.875rem;
+                            height: 1.875rem;
+                            background: $black;
+                            cursor: pointer;
+                        }  
+                        &::-moz-range-thumb {
+                            width: 1.875rem;
+                            height: 1.875rem;
+                            background: $black;
+                            cursor: pointer;
+                        }
+                    }
+                }
+                textarea {
+                    margin-bottom: 1rem;
+                }
+                p {
+                    margin-bottom: 4rem;
+                }
+                input[type="submit"] {
+                    width: auto;
+                    background: $black;
+                }
+            }
+            #bomb-wrapper {
+                justify-self: center;
             }
         }
     }

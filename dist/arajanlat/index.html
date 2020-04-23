@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weboldal készítés - HAROM.studio</title>
+
+    <link rel="stylesheet" href="//unpkg.com/swiper/css/swiper.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header class="border-bottom container">
+        <div id="logo">
+            <img src="../img/harom-logo-dark.svg" alt="HAROM.studio">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="../index.html#services">szolgáltatások</a></li>
+                <li><a href="../index.html#process">folyamat</a></li>
+                <li><a href="../index.html#about">rólunk</a></li>
+                <li><a href="../index.html#contact">kapcsolat</a></li>
+                <li class="btn"><a href="#">árak</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+
+        <section id="form" class="border-top container">
+            <h2>árajánlat kérés</h2>
+            <div class="flexbox">
+                <form action="" method="POST">
+                    <label for="f_name">
+                        név
+                        <input type="text" name="f_name" required aria-required="true" maxlength="100">
+                    </label>
+                    <label for="f_email">
+                        email cím
+                        <input type="email" name="f_email" required pattern="^(([-\w\d]+)(\.[-\w\d]+)*@([-\w\d]+)(\.[-\w\d]+)*(\.([a-zA-Z]{2,5}|[\d]{1,3})){1,2})$" spellcheck="false" required aria-required="true" title="pl. email@cim.hu; tartalmaznia kell a @ karaktert és a domain címet is (pl. cim.hu)">
+                    </label>
+                    <label for="f_website">
+                        weboldal cím (ha van)
+                        <input type="text" name="f_weboldal" maxlength="100">
+                    </label>
+                    <label for="f_range">
+                        keret (igény szerint)
+                        <input type="range" min="10" max="990" value="10" step="10" id="f_range" name="f_range">
+                        <p><span id="rangeValue"></span>.000 Ft</p>
+                    </label>
+                    <label for="f_message">
+                        megjegyzés
+                        <textarea name="f_message" id="f_message" cols="30" rows="10"></textarea>
+                    </label>
+                    <input type="submit" value="küldés" class="btn">
+                </form>
+                <div id="bomb-wrapper">
+                    <img src="../img/bomb.png" alt="HAROM.studio">
+                </div>
+            </div>
+        </section>
+        
+        <section id="contact" class="border-top container">
+            <h2>kapcsolat</h2>
+            <div class="grid">
+                <div class="grid-item">
+                    <a href="" class="email-link grid-item">weboldal@harom.studio</a>
+                </div>
+                <!-- <div class="grid-item desktop-only"></div> -->
+                <div class="grid-item">
+                    <a href="" class="insta-link grid-item">instagram</a>
+                </div>
+                <div class="grid-item">
+                    <a href="" class="fb-link grid-item">facebook</a>
+                </div>
+                <div class="grid-item">
+                    <a href="" class="web-link grid-item">harom.studio</a>
+                </div>
+                <div class="grid-item">
+                    <a href="" class="btn button-link grid-item">árajánlat</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        cookie consent
+    </footer>
+    <script src="https://unpkg.com/swiper/js/swiper.min.js"></script>
+    <script>
+        var rangeValue = document.getElementById('f_range'),
+            output = document.getElementById('rangeValue');
+        output.innerHTML = rangeValue.value;
+        rangeValue.oninput = function() {
+            output.innerHTML = this.value;
+        }
+    </script>
+</body>
+</html>

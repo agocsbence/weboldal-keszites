@@ -44,6 +44,11 @@ gulp.task('copyHTML', function() {
     .pipe(gulp.dest('dist/'));
 });
 
+gulp.task('copyPHP', function(){
+  return gulp.src('src/**/*.php')
+    .pipe(gulp.dest('dist/'));
+});
+
 gulp.task('watch', function () {
   gulp.watch('./src/scss/**/*.scss', gulp.series('styles'));
   console.log('gulp is watching for SCSS changes 👀');
@@ -52,7 +57,7 @@ gulp.task('watch', function () {
   return
 });
 
-gulp.task('default', gulp.series('imagemin', 'fonts', 'copyHTML', 'scripts', 'styles', 'watch'));
+gulp.task('default', gulp.series('imagemin', 'fonts', 'copyHTML', 'copyPHP', 'scripts', 'styles', 'watch'));
 
 // gulp.task('srcset', function(){
 //   return gulp.src('./src/img/belga.png}')
