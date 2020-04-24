@@ -73,7 +73,7 @@
         // Send mail
         mail($to, $subject, $mail_message, $header);
         mail($email, $subject2, $mail_message2, $header2);
-        print phpinfo();
+        phpinfo();
         // if (){
         //     echo "sikeres <br>";
         //     echo $mail_message;
