@@ -64,7 +64,7 @@
         );
         // Mail header
         $header = "Content-type: text/html; charset=".$encoding." \r\n";
-        $header .= "From: ".$name." <".$email."> \r\n";
+        $header .= "From: noreply@haromstudio.com \r\n";
         $header .= "MIME-Version: 1.0 \r\n";
         $header .= "Content-Transfer-Encoding: 8bit \r\n";
         $header .= "Date: ".date("r (T)")." \r\n";
