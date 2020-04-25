@@ -5,81 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weboldal készítés - HAROM.studio</title>
 
-    <link rel="stylesheet" href="//unpkg.com/swiper/css/swiper.min.css">
     <link rel="stylesheet" href="../css/style.css">
+    <!-- <script src="//www.google.com/recaptcha/api.js" async defer></script> -->
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/emailjs-com@2.4.1/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+           emailjs.init('user_IDTwRWo5XsYBHu40NRarH');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function() {
+            document.getElementById('contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // generate the contact number value
+                this.contact_number.value = Math.random() * 100000 | 0;
+                emailjs.sendForm('haromstudio_com_smtp_server', 'arajanlatkeres', this)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    location.reload();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                });;
+            });
+        }
+    </script>
 </head>
 <body>
-    <?php
-        $name = $_POST["f_name"];
-        $email = $_POST["f_email"];
-        $website = $_POST["f_website"];
-        $range = $_POST["f_range"];
-        $message = $_POST["f_message"];
-        $to = "bence@harom.studio, " . $email;
-        $subject = "Érdeklődés";
-        $subject2 = "Érdeklődés rögzítése - HAROM.studio";
-        $encoding = "utf-8";
-
-        $mail_message = "
-        <html>
-        <head>
-          <title>Érdeklődés - ". $name ."</title>
-        </head>
-        <body>
-          <h2>Név: ". $name ."</h2>
-          <h2>Email: ". $email ."</h2>
-          <h2>Weboldal: <a href='". $website ."'>". $website ."</a></h2>
-          <h2>Keret: ". $range .".000 Ft</h2>
-          <p>Megjegyzés: ". $message ."</p>
-        </body>
-        </html>
-        ";
-
-        $mail_message2 = "
-        <html>
-        <head>
-          <title>Érdeklődés rögzítve - ". $name ." - HAROM.studio</title>
-        </head>
-        <body>
-          <h2>Kedves ". $name ."!</h2>
-          <h3>Árajánlat kérésed rögzítettük az alábbi adatokkal:</h3>
-          <p>Email cím: ". $email ."</p>
-          <p>Weboldal cím: <a href='" . $website ."'>". $website ."</a></p>
-          <p>Keret: ". $range .".000 Ft</p>
-          <p>Megjegyzés: ". $message ."</p>
-          <br>
-          <p>Köszönjük a megkeresést, hamarosan jelentkezünk!</p>
-          <br>
-          <p>Üdvözlettel,</p>
-          <p>a HAROM.studio csapata</p>
-        </body>
-        </html>
-        ";
-
-        // Preferences for Subject field
-        $subject_preferences = array(
-            "input-charset" => $encoding,
-            "output-charset" => $encoding,
-            "line-break-chars" => "\r\n"
-        );
-        // Mail header
-        $header = "Content-type: text/html; charset=".$encoding." \r\n";
-        $header .= "From: HAROM.studio Árajánlat <noreply@haromstudio.com> \r\n";
-        $header .= "MIME-Version: 1.0 \r\n";
-        $header .= "Content-Transfer-Encoding: 8bit \r\n";
-        $header .= "Date: ".date("r (T)")." \r\n";
-        $header .= iconv_mime_encode("Subject", $subject, $subject_preferences);
-
-        // Send mail
-        mail($to, $subject, $mail_message, $header);
-        mail($email, $subject2, $mail_message2, $header2);
-        // if (){
-        //     echo "sikeres <br>";
-        //     echo $mail_message;
-        // } else {
-        //     echo "sikertelen <br>";
-        // };
-    ?>
     <header class="border-bottom container">
         <div id="logo">
             <img src="../img/harom-logo-dark.svg" alt="HAROM.studio">
@@ -99,7 +50,8 @@
         <section id="form" class="border-top container">
             <h2>árajánlat kérés</h2>
             <div class="flexbox">
-                <form action="" method="POST">
+                <form action="" method="POST" id="contact-form">
+                    <input type="hidden" name="contact_number">
                     <label for="f_name">
                         név
                         <input type="text" name="f_name" required aria-required="true" maxlength="100">
@@ -121,6 +73,7 @@
                         megjegyzés
                         <textarea name="f_message" id="f_message" cols="30" rows="10"></textarea>
                     </label>
+                    <!-- <div class="g-recaptcha" data-sitekey="6LcqN-4UAAAAAFBfX-OkgRUr9z15wwqp3Pove3R9"></div> -->
                     <input type="submit" value="küldés" class="btn">
                 </form>
                 <div id="bomb-wrapper">
