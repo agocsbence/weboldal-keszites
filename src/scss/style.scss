@@ -182,9 +182,10 @@ main {
     section#hero {
         display: flex;
         flex-direction: row;
-        justify-content: space-between;
+        justify-content: flex-start;
         align-items: center;
         padding: 8rem 0;
+        padding-top: 2.9rem;
         @media screen and (max-width: $tablet) {
             flex-direction: column;
             align-items: flex-start;
@@ -193,12 +194,15 @@ main {
         h1 {
             font-size: 9.7rem;
             line-height: 10.3rem;
+            flex-grow: 2;
             @media screen and (max-width: $tablet) {
                 font-size: 5rem;
                 line-height: 110%;
             }
         }
-        img {
+        .flex-wrapper {
+            flex-grow: 1;
+            width: auto;
             @media screen and (max-width: $tablet) {
                 margin-top: 3rem;
             }
@@ -349,7 +353,7 @@ main {
             .grid-item {
                 justify-self: center;
                 &:first-child { justify-self: start; }
-                &:last-child { justify-self: end; }
+                // &:last-child { justify-self: end; }
                 @media screen and (max-width: $tablet) {
                     justify-self: start;
                 }
