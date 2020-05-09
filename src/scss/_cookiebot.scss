@@ -1,11 +1,11 @@
 #CybotCookiebotDialog {
-    box-shadow: 0;
-    border-top: 1px solid $black;
+    box-shadow: none !important;
+    border-top: 1px solid $black !important;
     #CybotCookiebotDialogPoweredbyImage {
         display: none !important;
     }
     #CybotCookiebotDialogBodyButtonAccept {
-        border: 0;
-        background: $black;
+        border: 0 !important;
+        background: $black !important;
     }
 }
